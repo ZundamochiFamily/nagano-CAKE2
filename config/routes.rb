@@ -18,20 +18,18 @@ Rails.application.routes.draw do
     root 'homes#top'
   end
 
-  namespace :public do
     resource :member, except:[:create, :new, :destroy]
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
     resources :cart_items, except:[:show, :new, :edit]
     resources :orders, except:[:edit, :update, :destroy]
-    root 'home#top'
+    root 'homes#top'
     get 'homes/about' => 'homes#about'
     get 'orders/thanks' => 'orders#thanks'
     get 'orders/check' => 'orders#check'
     get 'members/leave' => 'members#leave'
     patch 'members/actived' => 'members#actived'
     put 'members/actived' => 'members#actived'
-  end
-
+    delete 'cart_items/all_destroy' => 'cart_items#all_destroy' 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
