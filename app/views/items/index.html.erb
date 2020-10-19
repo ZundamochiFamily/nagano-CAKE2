@@ -1,0 +1,13 @@
+<div class="col-xs-9">
+  <h2ジャンル検索></h2>
+</div>
+<div class="col-xs-12">
+  <h2>商品一覧</h2>
+   <% @items.each do |item| %>
+  <div>
+    <%= item.item_image_id %>
+    <p><%= item.item_name %></p>
+    <p><%= item.tax_excluded_price %></p>
+  </div>
+  <% end %>
+</div>
