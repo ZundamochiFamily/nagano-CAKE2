@@ -1,2 +1,5 @@
-class HomesController < ApplicationController
+class Public::HomesController < ApplicationController
+  def top
+  end
+
 end
