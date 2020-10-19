@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  
   def index
     @items = Item.all
   end
@@ -21,9 +22,9 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def upload
+  def update
     @item = Item.find(params[:id])
-    @item.save(item_params)
+    @item.update(item_params)
     redirect_to admin_item_path(@item)
   end
 
