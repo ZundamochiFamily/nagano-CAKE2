@@ -1,0 +1,55 @@
+<h2>ご注文履歴詳細</h2>
+<% @order.each do |order| %>
+  <div class="field">
+    <table class="table1" style="float:left; margin-right:25px;">
+      <caption>注文情報</caption>
+      <tr>
+        <td>注文日</td>
+        <td><%= order.date %></td>
+      </tr>
+      <tr>
+        <td>配送先</td>
+        <td><%= order.address %></td>
+      </tr>
+      <tr>
+        <td>支払い方法</td>
+        <td><%= order.payment_method %></td>
+      </tr>
+      <tr>
+        <td>ステータス</td>
+        <td><%= order.order_status %></td>
+      </tr>
+    </table>
+    <table>
+      <caption>請求情報</caption>
+        <tr>
+          <td>商品合計</td>
+          <td><%= order.sub_total %></td>
+        </tr>
+        <tr>
+          <td>配送料</td>
+          <td><%= @shipping %></td>
+        </tr>
+        <tr>
+          <td>ご請求金額</td>
+          <td><%= order.biling_amount %></td>
+        </tr>
+    </table>
+  <div class="field">
+    <table>
+      <tr>
+        <th colspan="8">商品</th>
+        <th colspan="2">単価（税込)</th>
+        <th colspan="1">個数</th>
+        <th colspan="1">小計</th>
+      </tr>
+      <tr>
+        <td><%= order.item_name %></td>
+        <td><%= order.tax_included_price %></td>
+        <td><%= order.quantity %></td>
+      <% sub_total = order.tax_included_price * order.quantity %>
+        <td><%= sub_total %></td>
+      </tr>
+    </table>
+  </div>
+    
