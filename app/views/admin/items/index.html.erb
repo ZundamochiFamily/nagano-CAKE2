@@ -1,6 +1,8 @@
-<h2>商品一覧</h2>
+<div class="container">
 
-<table class="col-xs-12">
+<h2>商品一覧</h2>
+<div>
+<table class="col-xs-9 table">
   <thead>
     <tr>
       <th>商品ID</th>
@@ -16,9 +18,11 @@
       <td><%= item.id %></td>
       <td><%= item.item_name %></td>
       <td><%= item.tax_excluded_price %></td>
-      <td><%= item.genre_id %></td>
+      <td><%= item.genre.genre_name %></td>
       <td><%= item.sales_status %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
