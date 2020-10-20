@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class Public::MembersController < ApplicationController
 
   def show
     @member = current_member
