@@ -1,2 +1,3 @@
-class ublic::DeliveryDestinationsController < ApplicationController
+class Public::DeliveryDestinationsController < ApplicationController
+
 end

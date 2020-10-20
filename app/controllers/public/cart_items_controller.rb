@@ -1,5 +1,4 @@
 class Public::CartItemsController < ApplicationController
-
   #商品詳細画面から「カートに追加」を押したときのアクション
   def create
     if current_member.cart_item.blank?
@@ -45,4 +44,5 @@ class Public::CartItemsController < ApplicationController
  def cart_item_params
     params.permit(:quantity).merge(member_id:current_member.id, item_id:item.id)
  end
+e
 end
