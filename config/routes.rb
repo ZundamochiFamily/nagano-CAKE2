@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
-  devise_for :admins
-
-=======
 devise_for :admins
->>>>>>> 2be39e02422dc531c25148daccc72c2e5daff78f
+
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
     resources :genres, except:[:new, :show, :destroy]
