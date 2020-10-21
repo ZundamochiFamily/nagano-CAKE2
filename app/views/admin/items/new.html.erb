@@ -1,0 +1,29 @@
+<div class="row">
+<h2>商品新規登録</h2>
+<%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+  <div class="col-xs-3">
+    <%= f.file_field :item_image_id %>
+  </div>
+  <div class="col-xs-9">
+    <div>
+     <%= f.label :item_name, '商品名' %>
+     <%= f.text_field :item_name %>
+    </div>
+    <div>
+      <%= f.label :introduction, '商品説明' %>
+      <%= f.text_area :introduction %>
+    </div>
+    <div>
+      <%= f.label :genre_id, 'ジャンル' %>
+      <%= f.select :genre_id, [["ケーキ", "1"], ["プリン", "2"], ["焼き菓子", "3"], ["キャンディ", "4"]], include_blank: "選択して下さい" %>
+    </div>
+    <div>
+      <%= f.label :tax_excluded_price, '税抜価格' %>
+      <%= f.text_field :tax_excluded_price %>
+    </div>
+    <div class="actions row">
+    <%= f.submit '新規登録', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+</div>

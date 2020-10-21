@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+
+  devise_for :admins
+
+=======
 devise_for :admins
+>>>>>>> 2be39e02422dc531c25148daccc72c2e5daff78f
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
     resources :genres, except:[:new, :show, :destroy]
@@ -8,11 +14,13 @@ devise_for :admins
     resources :ordered_items, only:[:update]
     root 'homes#top'
   end
+
   devise_for :members, :members => {
     :sessions => 'members/sessions',
     :registrations => 'members/registrations',
     :passwords => 'members/passwords'
   }
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
