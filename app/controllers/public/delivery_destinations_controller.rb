@@ -1,5 +1,4 @@
 class Public::DeliveryDestinationsController < ApplicationController
-<<<<<<< HEAD
     def index
         @deliverys = DeliveryDestination.all
         @delivery = DeliveryDestination.new
@@ -36,8 +35,6 @@ class Public::DeliveryDestinationsController < ApplicationController
     def delivery_params
         params.require(:delivery_destination).permit(:postal_code, :address, :reciever_name)
     end
-=======
->>>>>>> c5c6de1406e6b632c65477b1f9ca9655df8b8fa5
 end
 
 
