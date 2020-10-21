@@ -1,8 +1,10 @@
 class CartItem < ApplicationRecord
   belongs_to :member
-  belongs_to :items
+  belongs_to :item
   
-  def price_included_tax
-    cart_items.tax_excluded_price * 1.1
+  def tax
+    return self.item.tax_excluded_price * 1.1
   end
 end
+
+
