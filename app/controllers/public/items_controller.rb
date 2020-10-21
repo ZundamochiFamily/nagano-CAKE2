@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
 
+
   def index
     @items = Item.all
     @genres = Genre.all
@@ -9,5 +10,6 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @item = Item.find(params[:id])
   end
+
 
 end
