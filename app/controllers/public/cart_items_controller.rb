@@ -44,5 +44,4 @@ class Public::CartItemsController < ApplicationController
  def cart_item_params
     params.permit(:quantity).merge(member_id:current_member.id, item_id:item.id)
  end
-e
 end
