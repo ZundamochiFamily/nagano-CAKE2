@@ -32,7 +32,7 @@ devise_for :admins
     end
     resources :orders, except:[:edit, :update, :destroy] do
       collection do
-        get 'check'
+        post 'check'
         get 'thanks'
       end
     end
