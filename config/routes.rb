@@ -22,7 +22,9 @@ Rails.application.routes.draw do
         get 'leave'
         put 'actived'
         patch 'actived'
-      end
+
+    end
+
     end
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
@@ -33,7 +35,10 @@ Rails.application.routes.draw do
     end
     resources :orders, except:[:edit, :update, :destroy] do
       collection do
+
         post 'check'
+
+
         get 'thanks'
       end
     end

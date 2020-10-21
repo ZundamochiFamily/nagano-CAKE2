@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
 
+
   def show
     @member = current_member
   end
@@ -36,3 +37,5 @@ class Public::MembersController < ApplicationController
   end
 
 end
+
+
