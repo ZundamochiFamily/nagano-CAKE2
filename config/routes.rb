@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :admins
-  
+
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
     resources :genres, except:[:new, :show, :destroy]
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
         get 'leave'
         put 'actived'
         patch 'actived'
-      end 
+      end
     end
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
