@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins
+
+
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
     resources :genres, except:[:new, :show, :destroy]
@@ -9,11 +12,13 @@ Rails.application.routes.draw do
     resources :ordered_items, only:[:update]
     root 'homes#top'
   end
+
   devise_for :members, :members => {
     :sessions => 'members/sessions',
     :registrations => 'members/registrations',
     :passwords => 'members/passwords'
   }
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
@@ -24,6 +29,7 @@ Rails.application.routes.draw do
         patch 'actived'
       end 
     end
+
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
     resources :cart_items, except:[:show, :new, :edit] do
@@ -33,10 +39,9 @@ Rails.application.routes.draw do
     end
     resources :orders, except:[:edit, :update, :destroy] do
       collection do
-        get 'check'
+        post 'check'
         get 'thanks'
       end
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
