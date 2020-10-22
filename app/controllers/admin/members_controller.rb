@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
   
+<<<<<<< HEAD
   def index
     @members = Member.all
   end
@@ -11,4 +12,6 @@ class Admin::MembersController < ApplicationController
   def edit
     @member = Member.find(params[:id])
   end
+=======
+>>>>>>> 47c114a254ec6824368ce7720bd691b8bae5d795
 end
