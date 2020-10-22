@@ -2,7 +2,7 @@
 <h2>商品新規登録</h2>
 <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
   <div class="col-xs-3">
-    <%= f.file_field :item_image_id %>
+    <%= f.attachment_field :item_image %>
   </div>
   <div class="col-xs-9">
     <div>
