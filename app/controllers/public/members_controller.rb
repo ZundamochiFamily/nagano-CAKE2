@@ -1,6 +1,5 @@
 class Public::MembersController < ApplicationController
 
-
   def show
     @member = current_member
   end
@@ -21,7 +20,7 @@ class Public::MembersController < ApplicationController
   def leave
     @member = current_member
   end
-  
+
   def actived
     @member = current_member
     @member.update(is_deleted: true)

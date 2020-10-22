@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins
+
 
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
