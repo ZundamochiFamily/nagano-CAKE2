@@ -19,10 +19,12 @@
         </td>
        <td><%= member.email %></td>
        <td>
-         <%= if member.is_deleted == false %>
+         <% if member.is_deleted == false %>
          <p>有効</p>
          <% elsif member.is_deleted == true  %>
-         </td>
+         <p>無効</p>
+         <% end %>
+        </td>
      </tr>
      <% end %>
    </tbody>

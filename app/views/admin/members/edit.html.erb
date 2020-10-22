@@ -1,5 +1,5 @@
 <h2 class="title">会員情報編集</h2>
-<% form_with model: @member local: true do |f| %>
+<%= form_with model: @member, local: true do |f| %>
 <p>顧客ID</p>
   <%= @member.id %>
   <p>氏名</p>
@@ -15,10 +15,9 @@
   <p>電話番号</p>
   <p>メールアドレス</p>
   <%= f.text_field:email %>
-  
+
   <%= f.submit '変更を保存する' %>
-  
+
   <% end %>
-  
-  
-  
+
+

@@ -1,6 +1,13 @@
-<h2 class="title"><%= @member.会員詳細</h2>
+<h2 class="title">会員詳細</h2>
   <p>顧客ID</p>
   <%= @member.id %>
+  <p>
+  <% if @member.is_deleted == false %>
+  <p>有効会員</p>
+  <% elsif @member.is_deleted == true  %>
+  <p>無効会員</p>
+  <% end %>
+  </p>
   <p>氏名</p>
   <%= @member.first_name %>
   <%= @member.last_name %>
@@ -14,3 +21,7 @@
   <p>電話番号</p>
   <p>メールアドレス</p>
   <%= @member.email %>
+
+<div>
+  <%= link_to "編集する", edit_admin_member_path(@member) %>
+</div>
