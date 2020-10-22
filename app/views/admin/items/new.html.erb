@@ -2,7 +2,7 @@
 <h2>商品新規登録</h2>
 <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
   <div class="col-xs-3">
-    <%= f.file_field :item_image_id %>
+    <%= f.attachment_field :item_image %>
   </div>
   <div class="col-xs-9">
     <div>
@@ -24,7 +24,7 @@
 
     <div class="form-group">
       <%= f.label :sales_status,  '販売ステータス', class: "col-sm-3 control-label" %>
-      <%= f.select :sales_status, [['onsale', 0], ['soldout', 2]], prompt: "-- 選択してください --", class: "col-sm-7 form-area" %>
+      <%= f.select :sales_status, [['onsale', 0], ['soldout', 1]], prompt: "-- 選択してください --", class: "col-sm-7 form-area" %>
     </div>
 
     <div class="actions row">
