@@ -17,14 +17,14 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td width="40%"><%= cart_item.item.item_name %></td>
-            <% price_included_tax = (cart_item.item.tax_excluded_price).to_i * 1.1 %>
+            <% price_included_tax = (cart_item.item.tax_excluded_price * @tax).floor %>
           <td width="15%"><%= price_included_tax %></td>
-        <% form_with @cart_item, url: {controller: 'public/cart_items', action: 'update' }, method: :patch do |f| %>
-          <td width="15%"><%= f.number_field :quantity, :value => cart_item.item.quantity %>
-            <%= link_to '変更', cart_item_path, class:"btn btn-primary" %>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true do |f| %>
+          <td width="15%"><%= f.number_field :quantity, :value => cart_item.quantity %>
+            <%= f.submit '変更', class:"btn btn-primary" %>
           </td>
-        <% end %>
-        <% sub_total = price_included_tax * cart_item.item.quantity %>
+          <% end %>
+        <% sub_total = price_included_tax * cart_item.quantity %>
           <td width="15%"><%= sub_total %></td>
           <td width="15%"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class:"btn btn-danger" %></td>
         </tr>
