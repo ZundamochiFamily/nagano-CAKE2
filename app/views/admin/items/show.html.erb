@@ -20,5 +20,13 @@
     <label>税抜き価格</label>
     <%= @item.tax_excluded_price %>円
   </div>
-
+  <div class="field flex">
+	     <p>販売ステータス</p>
+	   	   <% if @item.sales_status == 0 %>
+	   	     <p>販売中</p>
+	   	   <% elsif @item.sales_status == 1 %>
+	   	     <p>販売停止中</p>
+	   	  <% end %>
+	   </div>
+ </div>
 </div>

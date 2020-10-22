@@ -17,7 +17,7 @@
   <p><%= @item.introduction %></p>
   <p>￥<%= @item.tax_excluded_price %>（税込）</p>
 
-  <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択" %>
+  <%= f.select :quantity, options_for_select((1..25).to_a), include_blank: "選択してください", class: 'form-control' , required: true %>
   <%= f.submit 'カートに入れる' %>
   </div>
   <% end %>
