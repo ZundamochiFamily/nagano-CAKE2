@@ -1,4 +1,5 @@
 class Public::DeliveryDestinationsController < ApplicationController
+
     def index
         @deliverys = DeliveryDestination.all
         @delivery = DeliveryDestination.new

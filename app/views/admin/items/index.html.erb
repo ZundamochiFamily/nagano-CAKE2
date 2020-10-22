@@ -19,7 +19,11 @@
       <td><%= item.item_name %></td>
       <td><%= item.tax_excluded_price %></td>
       <td><%= item.genre.genre_name %></td>
-      <td><%= item.sales_status %></td>
+      <td><% if item.sales_status == 0 %>
+	   	     <p>販売中</p>
+	   	   <% elsif item.sales_status == 1 %>
+	   	     <p>販売停止中</p>
+	   	  <% end %></td>
     </tr>
     <% end %>
   </tbody>
