@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-devise_for :admins
+
+  devise_for :admins
+
 
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
@@ -25,8 +27,9 @@ devise_for :admins
         get 'leave'
         put 'actived'
         patch 'actived'
-      end
+      end 
     end
+
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
     resources :cart_items, except:[:show, :new, :edit] do
