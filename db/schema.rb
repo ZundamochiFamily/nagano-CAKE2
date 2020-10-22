@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_060822) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "member_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_060822) do
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
