@@ -9,11 +9,13 @@ Rails.application.routes.draw do
     resources :ordered_items, only:[:update]
     root 'homes#top'
   end
+
   devise_for :members, :members => {
     :sessions => 'members/sessions',
     :registrations => 'members/registrations',
     :passwords => 'members/passwords'
   }
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
         patch 'actived'
       end 
     end
+
     resources :delivery_destinations, except:[:show, :new]
     resources :items, except:[:destroy]
     resources :cart_items, except:[:show, :new, :edit] do
