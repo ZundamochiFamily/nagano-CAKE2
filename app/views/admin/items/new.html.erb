@@ -1,39 +1,42 @@
-
-<h2>商品新規登録</h2>
-<div class="col-xs-10">
-  
+<div class="container">
+<h2 class="title">商品新規登録</h2>
+<div>
 
 <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
-  <div class="col-xs-5">
+  <div class="col-xs-6 display-center">
     <%= f.attachment_field :item_image %>
   </div>
-  <div class="col-xs-7">
-    <div class="form-group">
+
+  <div class="col-xs-6">
+    <div class="form-group display-flex">
      <%= f.label :item_name, '商品名' %>
      <%= f.text_field :item_name %>
     </div>
-    <div class="form-group">
+
+    <div class="form-group display-flex">
       <%= f.label :introduction, '商品説明' %>
       <%= f.text_area :introduction %>
     </div>
-    <div class="form-group">
+
+    <div class="form-group display-flex">
       <%= f.label :genre_id, 'ジャンル' %>
       <%= f.collection_select(:genre_id, @genres, :id, :genre_name, prompt: "--選択して下さい") %>
     </div>
-    <div class="form-group">
+
+    <div class="form-group display-flex">
       <%= f.label :tax_excluded_price, '税抜価格' %>
       <%= f.text_field :tax_excluded_price %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :sales_status,  '販売ステータス', class: "col-sm-3 control-label" %>
+    <div class="form-group display-flex">
+      <%= f.label :sales_status,  '販売ステータス', class: "control-label" %>
       <%= f.select :sales_status, [['onsale', 0], ['soldout', 1]], prompt: "-- 選択してください --", class: "col-sm-7 form-area" %>
     </div>
+    </div>
 
-    <div class="actions row text-right">
+    <div class="actions text-right btn-right">
     <%= f.submit '新規登録', class: 'btn btn-primary' %>
     </div>
-  </div>
 <% end %>
 </div>
-
+</div>

@@ -65,14 +65,20 @@
           <% end %>
 			</tbody>
 			</table>
-			<td><%= @biling_amount %></td>
 	  </div>
 	  <div class="col-xs-3  billing">
 			<table class="table table-hover table-bordered table-condensed">
 				<label>商品合計</label>
-				<td></td>
+				<%= @total.inject{|sum,n| sum + n} %>
+				<label>配送料</label>
+				<%= @shipping %>
+				<label>請求金額合計</label>
+				<% if @total.count == 1 %>
+				 <%= @total + @shipping %>
+				<% else %>
+				 <%= @total.inject{|sum, n| sum + n } + @shipping %>
+				<% end %>
 		    </table>
 	  </div>
-
 	  </div>
   </div>
