@@ -1,23 +1,26 @@
-<div class="row">
+
 <h2>商品新規登録</h2>
+<div class="col-xs-10">
+  
+
 <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
-  <div class="col-xs-3">
+  <div class="col-xs-5">
     <%= f.attachment_field :item_image %>
   </div>
-  <div class="col-xs-9">
-    <div>
+  <div class="col-xs-7">
+    <div class="form-group">
      <%= f.label :item_name, '商品名' %>
      <%= f.text_field :item_name %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :introduction, '商品説明' %>
       <%= f.text_area :introduction %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :genre_id, 'ジャンル' %>
       <%= f.collection_select(:genre_id, @genres, :id, :genre_name, prompt: "--選択して下さい") %>
     </div>
-    <div>
+    <div class="form-group">
       <%= f.label :tax_excluded_price, '税抜価格' %>
       <%= f.text_field :tax_excluded_price %>
     </div>
@@ -27,9 +30,10 @@
       <%= f.select :sales_status, [['onsale', 0], ['soldout', 1]], prompt: "-- 選択してください --", class: "col-sm-7 form-area" %>
     </div>
 
-    <div class="actions row">
+    <div class="actions row text-right">
     <%= f.submit '新規登録', class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
 </div>
+
