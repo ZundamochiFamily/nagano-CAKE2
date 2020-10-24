@@ -13,6 +13,6 @@ class Admin::OrderedItemsController < ApplicationController
 
   def ordered_items_params
 		  params.require(:ordered_item).permit(:make_status)
-	end
+  end
 
 end

@@ -8,6 +8,12 @@ class Admin::OrdersController < ApplicationController
   def show
 		@order = Order.find(params[:id])
 		@order_details = @order.ordered_items
+		@shipping = 800
+		@total = []
+		@order.ordered_items.each do |order_item|
+			@total << order_item.quantity * order_item.item.tax_excluded_price
+		end
+
   end
 
   def update
@@ -17,7 +23,6 @@ class Admin::OrdersController < ApplicationController
 		else
 		   render "show"
     end
-  
   end
 
   private
