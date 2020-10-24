@@ -62,7 +62,8 @@ class Public::OrdersController < ApplicationController
         @cart_items.each do |cart_item|
           @ordered_item = @order.ordered_items.new
           @ordered_item.item_id = cart_item.item.id
-          @ordered_item.purchased_price = cart_item.item.tax_excluded_price
+          @tax = 1.1
+          @ordered_item.purchased_price = (cart_item.item.tax_excluded_price*@tax).round
           @ordered_item.quantity = cart_item.quantity
           @ordered_item.save
         end
@@ -85,7 +86,12 @@ class Public::OrdersController < ApplicationController
     @shipping = 800
     @total = []
     @order.ordered_items.each do |ordered_item|
-    @total << ordered_item.quantity * ordered_item.pursed_price
+    @total << ordered_item.quantity * ordered_item.purchased_price
+    end
+    if @order.payment_method == 0
+      @payment_method = "クレジットカード"
+    elsif @order.payment_method == 1
+      @payment_method = "銀行振込"
     end
   end
 

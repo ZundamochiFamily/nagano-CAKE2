@@ -12,7 +12,7 @@
   </tr>
   <tr>
     <td>支払方法</td>
-    <td><%= @order.payment_method %></td>
+    <td><%= @payment_method %></td>
   </tr>
   <tr>
     <td>ステータス</td>
@@ -24,7 +24,7 @@
 <table border="1">
     <tr>
       <td>商品合計</td>
-      <td><%= @total.inject{|sum, n| sum + n} %></td>
+      <td><%= @total.inject{|sum, n| sum + n}.to_s(:delimited, delimiter: ",") %></td>
     </tr>
     <tr>
       <td>配送料</td>
@@ -33,10 +33,10 @@
     <tr>
       <td>ご請求額</td>
       <td>
-        <% if @total.count = 1 %>
-          <%= @total + @shipping %>
+        <% if @total.count == 1 %>
+          <%= (@total + @shipping).to_s(:delimited, delimiter: ",") %>
         <% else %>
-          <%= @total.inject{|sum, n| sum + n }　+ @shipping %>
+          <%= (@total.inject{|sum, n| sum + n } + @shipping).to_s(:delimited, delimiter: ",") %>
         <% end %>
       </td>
     </tr>
@@ -51,10 +51,12 @@
     <th>小計</th>
 
   <% @order.ordered_items.each do |ordered_item| %>
-  </tr>
-    <td><%= ordered_item.item.item_name %></td>
-    <td><%= ordered_item.purchased_price %></td>
-    <td><%= ordered_item.quantity %></td>
-    <td><%=  %></td>
-  <tr>
+    </tr>
+      <td><%= ordered_item.item.item_name %></td>
+      <td><%= ordered_item.purchased_price %></td>
+      <td><%= ordered_item.quantity %></td>
+      <% sub_total = ordered_item.purchased_price * ordered_item.quantity %>
+      <td><%= sub_total %></td>
+    <tr>
+  <% end %>
 </table>
