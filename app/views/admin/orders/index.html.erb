@@ -1,24 +1,35 @@
-<h2>注文履歴一覧</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>購入日時</th>
-        <th>購入者</th>
-        <th>注文個数</th>
-        <th>注文ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.each do |order| %>
-        <tr>
-          <td>
-            <%= link_to admin_order_path(order) do %>
-              <%= order.created_at.strftime('%Y/%m/%d') %>
-            <% end %>
-          </td>
-          <td><%= order.name(members_id: params[members_id]) %></td>
-          <td><%= order.quantity %></td>
-          <td><%= order.order_status %></td>
-        </tr>
-      </tbody>
-  </table>
+<div class="col-xs-10 col-xs-offset-1">
+	  <h3 class="col-sm-3">注文履歴一覧</h3>
+		<table class="table table-hover table-bordered table-condensed">
+		  <thead>
+		    <tr class="info">
+		      <th class="col-xs-3"><i class="far fa-clock"></i>購入日時</th>
+	      	  <th><i class="far fa-user"></i>購入者</th>
+		      <th class="col-xs-1">注文個数</th>
+		      <th class="col-xs-2">注文ステータス</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <% @orders.each do |order| %>
+		      <tr>
+		        <td>
+		          <%= link_to admin_order_path(order), data: {"turbolinks" => false}, :style=>"color:#528fff;"  do %>
+		          	<%= order.created_at.strftime('%Y/%m/%d/%T') %>
+		          <% end %>
+		        </td>
+		        <td class="text-left">
+		          <%= order.member.last_name %><%= order.member.first_name %>
+		        </td>
+		        <td class="text-right">
+		          <%= order.ordered_items.count %>
+		        </td>
+    	        <td>
+    	      	  <%= order.order_status %>
+     	        </td>
+     	      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+    <div class="text-center"><%= paginate(@orders) %></div>
+</div>

@@ -1,11 +1,11 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
     @order = Order.new
     @my_address = "#{current_member.postal_code} #{current_member.address}"
     @my_name = "#{current_member.first_name} #{current_member.last_name}"
   end
-  
+
   def check
     
     @order = Order.new
@@ -52,7 +52,7 @@ class Public::OrdersController < ApplicationController
     @biling_amounts = "#{biling_amount.to_s(:delimited, delimiter: ',')}円"
     @ordered_item = OrderedItem.new
   end
-  
+
   def create
     @cart_items = current_member.cart_items
     @order = Order.new(order_params)
@@ -72,14 +72,15 @@ class Public::OrdersController < ApplicationController
       request.referer
     end
   end
-  
+
   def thanks
   end
-  
+
   def index
     @orders = Order.all
+
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @shipping = 800
@@ -88,9 +89,9 @@ class Public::OrdersController < ApplicationController
       @total << ordered_item.quantity * ordered_item.pursed_price
     end
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :reciever_name)
   end
