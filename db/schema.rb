@@ -1,4 +1,21 @@
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_10_20_060822) do
+=======
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_10_23_114011) do
+
+>>>>>>> a40807c5d632b5b42eb6f54b7f8fa50d6f6fcd82
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_060822) do
     t.integer "shipping"
     t.integer "biling_amount"
     t.integer "payment_method", default: 0
-    t.string "reciver_name"
+    t.string "reciever_name"
     t.string "postal_code"
     t.string "address"
     t.integer "order_status", default: 0
