@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
+
   def index
   	@orders = Order.all.page(params[:page]).per(10)
   end
@@ -23,4 +24,5 @@ class Admin::OrdersController < ApplicationController
 	def order_params
 		  params.require(:order).permit(:order_status)
 	end
+
 end
