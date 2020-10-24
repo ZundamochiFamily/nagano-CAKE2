@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_10_20_060822) do
-=======
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -15,7 +12,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_060822) do
 
 ActiveRecord::Schema.define(version: 2020_10_23_114011) do
 
->>>>>>> a40807c5d632b5b42eb6f54b7f8fa50d6f6fcd82
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -27,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "member_id"
@@ -34,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "delivery_destinations", force: :cascade do |t|
     t.integer "member_id"
     t.string "postal_code"
@@ -42,12 +40,14 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
     t.boolean "is_activated", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
     t.string "item_name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.datetime "updated_at", null: false
     t.integer "sales_status", default: 0
   end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
+
   create_table "ordered_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "order_id"
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
   create_table "orders", force: :cascade do |t|
     t.integer "member_id"
     t.integer "shipping"
@@ -98,4 +101,5 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
