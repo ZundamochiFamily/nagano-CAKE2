@@ -34,16 +34,19 @@ class Public::CartItemsController < ApplicationController
   
   #カートの1アイテムを削除
   def destroy
-    cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
-    cart_item.destroy
-    redirect_back fallback_location
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_back(fallback_location: root_path)
+
   end
 
   #カートを空にする
   def all_destroy
-    cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    redirect_back fallback_location, success:"カートが空になりました"
+    @cart_item = current_member.cart_items
+    @cart_item.destroy_all
+    redirect_back(fallback_location: root_path)
+
+    flash[:success] = "カートが空になりました"
   end
   
   private
