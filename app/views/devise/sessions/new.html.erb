@@ -1,24 +1,24 @@
+<div class="mx-auto">
 
-<div class="message">会員の方はこちらからログイン</div>
+<h3 class="title">管理者ログイン</h3>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label 'メールアドレス' %>
+<ul class="login_ul">
+<li class="login_li">
+  <div class="field form-group">
+    <%= f.label 'メールアドレス', class: "login-label"%>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
-  <div class="field">
-    <%= f.label 'パスワード' %>
+</li>
+<li class="admin_li">
+  <div class="field form-group">
+    <%= f.label 'パスワード', class: "login-label" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
+</li>
 
-  <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "=> パスワードを忘れた方はこちら", new_password_path(resource_name) %><br />
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+</ul>
+  <div class="actions login-btn">
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<div class="message">登録がお済みでない方</div>
-<p><%= link_to "こちら", new_member_registration_path %>　から新規登録を行ってください。</p>
+</div>
