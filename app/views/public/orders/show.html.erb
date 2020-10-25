@@ -1,0 +1,62 @@
+<span class="title">注文履歴詳細</span>
+
+<div class="table_title">注文情報</div>
+<table border="1">
+  <tr>
+    <td>注文日</td>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <td>配送先</td>
+    <td><%= @order.postal_code %><br><%= @order.address %><br><%= @order.reciever_name %></td>
+  </tr>
+  <tr>
+    <td>支払方法</td>
+    <td><%= @payment_method %></td>
+  </tr>
+  <tr>
+    <td>ステータス</td>
+    <td><%= @order.order_status %></td>
+  </tr>
+</table>
+
+<div class="table_title">請求情報</div>
+<table border="1">
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total.inject{|sum, n| sum + n}.to_s(:delimited, delimiter: ",") %></td>
+    </tr>
+    <tr>
+      <td>配送料</td>
+      <td><%= @shipping %></td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+      <td>
+        <% if @total.count == 1 %>
+          <%= (@total + @shipping).to_s(:delimited, delimiter: ",") %>
+        <% else %>
+          <%= (@total.inject{|sum, n| sum + n } + @shipping).to_s(:delimited, delimiter: ",") %>
+        <% end %>
+      </td>
+    </tr>
+</table>
+
+<div class="table_title">注文内容</div>
+<table border="1">
+  <tr>
+    <th>商品</th>
+    <th>単価（税込）</th>
+    <th>個数</th>
+    <th>小計</th>
+
+  <% @order.ordered_items.each do |ordered_item| %>
+    </tr>
+      <td><%= ordered_item.item.item_name %></td>
+      <td><%= ordered_item.purchased_price %></td>
+      <td><%= ordered_item.quantity %></td>
+      <% sub_total = ordered_item.purchased_price * ordered_item.quantity %>
+      <td><%= sub_total %></td>
+    <tr>
+  <% end %>
+</table>
