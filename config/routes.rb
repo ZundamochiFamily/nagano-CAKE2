@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, :controllers => {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
   }
 
   namespace :admin do
@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     root 'homes#top'
   end
 
-  devise_for :members, :controllers => {
-    :sessions => 'members/sessions',
-    :registrations => 'members/registrations',
-    :passwords => 'members/passwords'
+  devise_for :members, controllers: {
+    sessions: 'members/sessions',
+    registrations: 'members/registrations',
+    passwords: 'members/passwords'
   }
 
   scope module: :public do
