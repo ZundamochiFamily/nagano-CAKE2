@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  
-  devise_for :admins
+
+  devise_for :admins, :controllers => {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
   namespace :admin do
     resources :members,except:[:new, :create, :destroy]
     resources :genres, except:[:new, :show, :destroy]
@@ -10,7 +15,7 @@ Rails.application.routes.draw do
     root 'homes#top'
   end
 
-  devise_for :members, :members => {
+  devise_for :members, :controllers => {
     :sessions => 'members/sessions',
     :registrations => 'members/registrations',
     :passwords => 'members/passwords'
@@ -24,7 +29,7 @@ Rails.application.routes.draw do
         get 'leave'
         put 'actived'
         patch 'actived'
-      end 
+      end
     end
 
     resources :delivery_destinations, except:[:show, :new]
