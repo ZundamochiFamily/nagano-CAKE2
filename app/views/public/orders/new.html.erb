@@ -52,7 +52,9 @@
         </ul>
       </div>
       <div class="form-row text-center">
-        <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+        <% unless current_member.cart_items.empty? %>
+          <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+        <% end %>
       </div>
     <% end %>
   </div>

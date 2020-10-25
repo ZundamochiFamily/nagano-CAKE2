@@ -1,7 +1,7 @@
 
 <h2>注文履歴一覧</h2>
 
-<table>
+<table border="1" width="90%"　align="center" valign="top">
   <thead>
     <tr>
       <th>注文日</th>
@@ -15,26 +15,30 @@
   <tbody>
     <%  @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at %></td>
-      <td><%= order.address %></td>
+      <td>
+        <%= order.created_at.strftime('%Y/%m/%d') %>
+      </td>
+      <td>
+        <%= order.postal_code %><br>
+        <%= order.address %><br>
+        <%= order.reciever_name %>
+      </td>
       <td><% order.items.each do |item| %>
-            <%= item.item_name %>
+            <%= item.item_name %><br>
           <% end %>
       </td>
-      <td><%= order.biling_amount %></td>
-      <td><% if order.order_status == 0 %>
-      <p>入金待ち</p>
-      <% elsif order.order_status == 1 %>
-      <p>入金確認</p>
-      <% elsif order.order_status == 2 %>
-      <p>製作中</p>
-      <% elsif order.order_status == 3 %>
-      <P>発送準備中</P>
-      <% elsif order.order_status == 4 %>
-      <p>発送済み</p>
-      <% end %>
+      <td>
+        <% sub_total = 0 %>
+        <% order.ordered_items.each do |ordered_item| %>
+          <% sub_total += ordered_item.purchased_price * ordered_item.quantity %>
+        <% end %>
+        <% biling_amount = sub_total + @shipping %>
+        <%= "#{biling_amount.to_s(:delimited, delimiter: ",")}円" %>
       </td>
-      <td><%= link_to "表示する", order_path(order.id) %></td>
+      <td>
+        <%= order.order_status %>
+      </td>
+      <td><%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %></td>
     </tr>
     <% end %>
   </tbody>
