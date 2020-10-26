@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @genres = Genre.all
+    @genres = Genre.all.where(is_activated: 'true')
   end
 
   def show
