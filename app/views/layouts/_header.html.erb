@@ -14,33 +14,33 @@
           ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん！
         </li>
         <li class="header_item">
-          <%= link_to " マイページ", member_path(current_member), class: "header_btn glyphicon glyphicon-user" %>
+          <%= link_to " my page", member_path(current_member), class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " 商品一覧", items_path, class: "header_btn glyphicon glyphicon-gift" %>
+          <%= link_to " items", items_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " カート", cart_items_path, class: "header_btn glyphicon glyphicon-shopping-cart" %>
+          <%= link_to " carts", cart_items_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
+          <%= link_to " log out", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
       <% elsif admin_signed_in? %>
       <!--管理者ログイン-->
         <li class="header_item">
-          <%= link_to " 商品一覧", admin_items_path, class: "header_btn glyphicon glyphicon-gift" %>
+          <%= link_to " items", admin_items_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " 会員一覧", admin_members_path, class: "header_btn glyphicon glyphicon-user" %>
+          <%= link_to " members", admin_members_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " 注文履歴一覧", admin_orders_path, class: "header_btn glyphicon glyphicon-list-alt" %>
+          <%= link_to " orders", admin_orders_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " ジャンル一覧", admin_genres_path, class: "header_btn glyphicon glyphicon-th-list" %>
+          <%= link_to " genres", admin_genres_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
+          <%= link_to " log out", destroy_admin_session_path, method: :delete, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <form class="search">
         <input class="search-input"  type="text"  placeholder="Search">
@@ -51,16 +51,16 @@
       <% else %>
       <!--ログインしていない-->
         <li class="header_item">
-          <%= link_to " about", homes_about_path, class: "header_btn glyphicon glyphicon-book" %>
+          <%= link_to " about", homes_about_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " 商品一覧", items_path, class: "header_btn glyphicon glyphicon-gift" %>
+          <%= link_to " items", items_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " 新規登録", new_member_registration_path, class: "header_btn glyphicon glyphicon-pencil" %>
+          <%= link_to " sign up", new_member_registration_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
         <li class="header_item">
-          <%= link_to " ログイン", new_member_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
+          <%= link_to " log in", new_member_session_path, class: "header_btn glyphicon glyphicon-leaf" %>
         </li>
       <% end %>
     </ul>
