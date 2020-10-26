@@ -27,6 +27,85 @@
  border-bottom: solid 1px #383838;
  }
 
+ul {
+ list-style: none;
+}
+
+.flex {
+ display: flex;
+}
+
+.relative {
+ position: relative;
+ height: 30px;
+}
+
+.absolute {
+ position: absolute;
+
+}
+
+.absolute1 {
+ position: absolute;
+ left: 150px;
+}
+
+.absolute2 {
+ position: absolute;
+ left: 250px;
+}
+
+.a-orders-show {
+ width: 200px;
+ text-align: right;
+}
+
+.form-tit {
+ margin-right: 10px;
+ width: 100px;
+ float: left;
+}
+
+.margin-top {
+margin-top: 40px;
+}
+
+.cost {
+ margin-top: 70px;
+ margin-left: 30px;
+}
+
+.display-center {
+ height: 200px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.display-flex {
+ display: flex;
+ justify-content: space-around;
+ }
+
+.dl .dt {
+ width: 150px;
+ padding: 5px 0;
+ float: left;
+ clear: both;
+}
+
+.dl .dd {
+ padding:5px 0;
+}
+
+.circle {
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border: solid 1px;
+    color: black;
+}
+
 .margin {
  margin-top: 40px;
 }
@@ -93,3 +172,21 @@
  align-items: center;
  height: 80px;
  }
+ 
+ /*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
