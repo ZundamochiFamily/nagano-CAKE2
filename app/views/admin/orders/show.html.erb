@@ -9,7 +9,6 @@
 		    <%= @order.member.last_name %><%= @order.member.first_name %>
 		  </div>
 	   </li>
-	   
 	    <li class="form-group flex">
 	      <div>
 	        配送先
@@ -18,7 +17,6 @@
 	        <%= @order.postal_code %><%= @order.address %>
 	      </div>
 	    </li>
-	    
 	    <li class="form-group flex">
 	      <div>
 	        支払い方法
@@ -27,17 +25,17 @@
 	        <%= @order.payment_method %>
 	      </div>
 	    </li>
-	   <li class="form-group flex-width">
+	   <div class="form-group relative">
  	   <%= form_for(@order, url: admin_order_path, method: :patch) do |f| %>
- 	    <div>注文ステータス</div>
-      	<div>
+ 	      <div class="absolute">注文ステータス</div>
+      	<div class="absolute1">
           <%= f.select :order_status, Order.order_statuses.keys %>
         </div>
-      	<div class="actions">
+      	<div class="actions absolute2">
           <%= f.submit '更新' ,class: "btn btn-primary" %>
       	</div>
       <% end %>
-      </li>
+      </div>
       </ul>
 	  <div class="buyer-order col-xs-9">
 			<table class="table table-hover table-bordered table-inverse">
@@ -54,15 +52,14 @@
           <% @order_details.each do |order_detail| %>
           <tr>
           <td><%= order_detail.item.item_name %></td>
-          <td><%= order_detail.item.tax_excluded_price.to_s(:delimited) %></td>
+          <td><%= order_detail.tax_included_price.to_s(:delimited) %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.item.tax_excluded_price*order_detail.quantity %></td>
+          <td><%= order_detail.total_amount.to_s(:delimited) %></td>
           <%= form_with(model: order_detail, url: admin_ordered_item_path(order_detail.id),local:true,method: :patch) do |f| %>
           <td>
           <%= f.select:make_status,OrderedItem.make_statuses.keys %>
-          <%= f.submit '更新' %>
+          <%= f.submit '更新', class: "btn btn-primary" %>
           </td>
-
           <% end %>
           </tr>
           <% end %>
@@ -70,11 +67,11 @@
 			</table>
 			<td><%= @biling_amount %></td>
 	  </div>
-	  <div class="col-xs-3  billing">
+	  <div class="col-xs-3 margin-top">
 			<table class="table table-hover table-bordered table-condensed">
 				<div>
 				<label>商品合計</label>
-				<%= @total.inject{|sum,n| sum + n} %>
+				<%#= @total.inject{|sum,n| sum + n} %>
 				</div>
 				<div>
 				<label>配送料</label>
@@ -90,6 +87,4 @@
 				</div>
 		    </table>
 	  </div>
-
-	  </div>
-
+	</div>

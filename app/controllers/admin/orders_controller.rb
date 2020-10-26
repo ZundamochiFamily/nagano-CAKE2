@@ -1,6 +1,5 @@
 class Admin::OrdersController < ApplicationController
 
-
   def index
   	@orders = Order.all.page(params[:page]).per(10)
   end
@@ -8,12 +7,12 @@ class Admin::OrdersController < ApplicationController
   def show
 		@order = Order.find(params[:id])
 		@order_details = @order.ordered_items
+		# @tax_included_price = @order_details.tax_excluded_price*1.1
 		@shipping = 800
-		@total = []
-		@order.ordered_items.each do |order_item|
-			@total << order_item.quantity * order_item.item.tax_excluded_price
+		# @total = []
+		# @order.ordered_items.each do |order_item|
+		# 	@total << order_item.quantity * order_item.item.tax_excluded_price
 		end
-
   end
 
   def update
