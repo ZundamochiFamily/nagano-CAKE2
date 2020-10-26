@@ -1,11 +1,11 @@
-<header>
   <h2 class="nav nav-pills navbar-left logo">
     <% if admin_signed_in? %>
-    <%= link_to "CoCo壱番屋", admin_root_path, class: "logo_txt" %>
+    <%= link_to "NaGaNo-cake", admin_root_path, class: "logo_txt" %>
     <% else %>
-    <%= link_to "CoCo壱番屋", root_path, class: "logo_txt" %>
+    <%= link_to "NaGaNo-cake", root_path, class: "logo_txt" %>
     <% end %>
   </h2>
+
   <nav>
     <ul class="nav nav-pills navbar-right">
       <% if member_signed_in? %>
@@ -13,33 +13,33 @@
         <li class="header-name">
           ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん！
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " マイページ", member_path(current_member), class: "header_btn glyphicon glyphicon-user" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " 商品一覧", items_path, class: "header_btn glyphicon glyphicon-gift" %>
         </li>
         <li>
           <%= link_to " カート", cart_items_path, class: "header_btn glyphicon glyphicon-shopping-cart" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
         </li>
       <% elsif admin_signed_in? %>
       <!--管理者ログイン-->
-        <li>
+        <li class="header_item">
           <%= link_to " 商品一覧", admin_items_path, class: "header_btn glyphicon glyphicon-gift" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " 会員一覧", admin_members_path, class: "header_btn glyphicon glyphicon-user" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " 注文履歴一覧", admin_orders_path, class: "header_btn glyphicon glyphicon-list-alt" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " ジャンル一覧", admin_genres_path, class: "header_btn glyphicon glyphicon-th-list" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
         </li>
         <form class="search">
@@ -50,19 +50,18 @@
         </form>
       <% else %>
       <!--ログインしていない-->
-        <li>
+        <li class="header_item">
           <%= link_to " about", homes_about_path, class: "header_btn glyphicon glyphicon-book" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " 商品一覧", items_path, class: "header_btn glyphicon glyphicon-gift" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " 新規登録", new_member_registration_path, class: "header_btn glyphicon glyphicon-pencil" %>
         </li>
-        <li>
+        <li class="header_item">
           <%= link_to " ログイン", new_member_session_path, class: "header_btn glyphicon glyphicon-log-in" %>
         </li>
       <% end %>
     </ul>
   </nav>
-</header>

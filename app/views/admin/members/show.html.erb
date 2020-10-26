@@ -1,6 +1,9 @@
 <h2 class="title">会員詳細</h2>
-  <p>顧客ID</p>
-  <%= @member.id %>
+
+<div class="col-xs-12">
+<dl class="dl">
+  <dt class="dt">顧客ID</dt>
+  <dd class="dd"><%= @member.id %></dd>
   <p>
   <% if @member.is_deleted == false %>
   <p>有効会員</p>
@@ -8,20 +11,34 @@
   <p>無効会員</p>
   <% end %>
   </p>
-  <p>氏名</p>
-  <%= @member.first_name %>
-  <%= @member.last_name %>
-  <p>フリガナ</p>
-  <%= @member.first_name_kana %>
-  <%= @member.last_name_kana %>
-  <p>郵便番号</p>
-  <%= @member.postal_code %>
-  <p>住所</p>
-  <%= @member.address %>
-  <p>電話番号</p>
-  <p>メールアドレス</p>
-  <%= @member.email %>
+</dl>
+<dl class="dl">
+  <dt class="dt">氏名</dt>
+  <dd class="dd"><%= @member.first_name %><%= @member.last_name %></dd>
+</dl>
+<dl class="dl">
+  <dt class="dt">フリガナ</dt>
+  <dd class="dd"><%= @member.first_name_kana %><%= @member.last_name_kana %></dd>
+</dl>
+<dl class="dl">
+  <dt class="dt">郵便番号</dt>
+  <dd class="dd"><%= @member.postal_code %></dd>
+</dl>
+<dl class="dl">
+  <dt class="dt">住所</dt>
+  <dd class="dd"><%= @member.address %></dd>
+</dl>
+<dl class="dl">
+  <dt class="dt">電話番号</dt>
+  <dd class="dd"> <%= @member.phone_number %></dd>
+</dl>
+<dl class="dl">
+  <dt class="dt">メールアドレス</dt>
+  <dd class="dd"><%= @member.email %></dd>
+</dl>
+</div>
 
 <div>
-  <%= link_to "編集する", edit_admin_member_path(@member) %>
+  <%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-primary" %>
+  <%= link_to "注文履歴一覧を見る", admin_order_path(@member), class: "btn btn-primary" %>
 </div>

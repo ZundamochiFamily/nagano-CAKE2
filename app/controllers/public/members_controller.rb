@@ -9,7 +9,8 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = current_member
+    @member = Member.find(params[:id])
+    # @member = current_member
     if @member.update(member_params)
       redirect_to member_path, notice: "編集内容を保存しました。"
     else
@@ -29,13 +30,9 @@ class Public::MembersController < ApplicationController
     redirect_to root_path
   end
 
-
   private
   def member_params
-    params.require(:member).permit(:email, :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :phone_number)
+    params.require(:member).permit(:email, :first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :is_deleted, :address, :phone_number)
   end
-
-
 end
-
 
