@@ -1,41 +1,46 @@
-
 <h2>注文履歴一覧</h2>
-
-<table>
-  <thead>
+<table class="table table-hover" border="1" width="90%" style="margin-top:30px; margin-bottom:30px">
+  <thead class="active">
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th class="text-center">注文日</th>
+      <th class="text-center">配送先</th>
+      <th class="text-center">注文商品</th>
+      <th class="text-center">支払金額</th>
+      <th class="text-center">ステータス</th>
+      <th class="text-center">注文詳細</th>
     </tr>
   </thead>
   <tbody>
     <%  @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at %></td>
-      <td><%= order.address %></td>
-      <td><% order.items.each do |item| %>
-            <%= item.item_name %>
+      <td class="text-center">
+        <%= order.created_at.strftime('%Y/%m/%d') %>
+      </td>
+      <td class="text-center">
+        <%= "〒#{order.postal_code}" %><br>
+        <%= order.address %><br>
+        <%= "#{order.reciever_name} 様" %>
+      </td>
+      <td class="text-center"><% order.items.each do |item| %>
+            <%= item.item_name %><br>
           <% end %>
       </td>
-      <td><%= order.biling_amount %></td>
-      <td><% if order.order_status == 0 %>
-      <p>入金待ち</p>
-      <% elsif order.order_status == 1 %>
-      <p>入金確認</p>
-      <% elsif order.order_status == 2 %>
-      <p>製作中</p>
-      <% elsif order.order_status == 3 %>
-      <P>発送準備中</P>
-      <% elsif order.order_status == 4 %>
-      <p>発送済み</p>
-      <% end %>
+      <td class="text-center">
+        <% sub_total = 0 %>
+        <% order.ordered_items.each do |ordered_item| %>
+          <% sub_total += ordered_item.purchased_price * ordered_item.quantity %>
+        <% end %>
+        <% biling_amount = sub_total + @shipping %>
+        <%= "#{biling_amount.to_s(:delimited, delimiter: ",")}円" %>
       </td>
-      <td><%= link_to "表示する", order_path(order.id) %></td>
+      <td class="text-center">
+        <%= order.order_status %>
+      </td>
+      <td class="text-center">
+        <%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %>
+      </td>
     </tr>
     <% end %>
+    <%= paginate @orders %>
   </tbody>
 </table>
