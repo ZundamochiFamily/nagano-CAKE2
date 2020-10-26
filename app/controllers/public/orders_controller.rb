@@ -62,7 +62,8 @@ class Public::OrdersController < ApplicationController
         @cart_items.each do |cart_item|
           @ordered_item = @order.ordered_items.new
           @ordered_item.item_id = cart_item.item.id
-          @ordered_item.purchased_price = cart_item.item.tax_excluded_price
+          @tax=1.1
+          @ordered_item.purchased_price = cart_item.item.tax_excluded_price * @tax
           @ordered_item.quantity = cart_item.quantity
           @ordered_item.save
         end
