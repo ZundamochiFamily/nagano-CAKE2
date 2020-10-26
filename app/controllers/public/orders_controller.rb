@@ -78,7 +78,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page]).reverse_order
     @shipping = 800
   end
 
@@ -90,6 +90,11 @@ class Public::OrdersController < ApplicationController
     @total << ordered_item.quantity * ordered_item.purchased_price
     end
    
+    if @order.payment_method == 0
+      @payment_method ="クレジットカード"
+    elsif @order.payment_method == 1
+      @payment_method ="銀行振込"
+    end
   end
 
   private
