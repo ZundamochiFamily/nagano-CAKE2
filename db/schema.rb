@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_10_20_060822) do
-=======
 ActiveRecord::Schema.define(version: 2020_10_23_114011) do
->>>>>>> 7ddb28882fd69c2132f4722e41812218a25371e3
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

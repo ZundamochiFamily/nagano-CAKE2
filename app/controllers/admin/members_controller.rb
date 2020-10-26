@@ -1,4 +1,6 @@
 class Admin::MembersController < ApplicationController
+<<<<<<< HEAD
+=======
 
   def index
     @members = Member.all
@@ -12,4 +14,5 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+>>>>>>> 18066bc08245cc68b20f5e7aa468eaac8eaddad6
 end

@@ -1,0 +1,24 @@
+<div class="mx-auto">
+
+<h3 class="title">管理者ログイン</h3>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<ul class="login_ul">
+<li class="login_li">
+  <div class="field form-group">
+    <%= f.label 'メールアドレス', class: "login-label"%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+</li>
+<li class="admin_li">
+  <div class="field form-group">
+    <%= f.label 'パスワード', class: "login-label" %>
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+</li>
+
+</ul>
+  <div class="actions login-btn">
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

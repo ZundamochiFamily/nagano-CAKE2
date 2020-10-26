@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
       @order.reciever_name = [current_member.first_name, current_member.last_name]
     elsif params[:order][:address_type] == 'registered'
       address = DeliveryDestination.find(params[:order][:address_id])
-      @address = "#{address.postal_code} #{address.address} #{address.reciever_name}"
+      @address = address.full_address
       @order.postal_code = address.postal_code
       @order.address = address.address
       @order.reciever_name = address.reciever_name
@@ -77,7 +77,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page]).reverse_order
+    @shipping = 800
   end
   
   def show
@@ -85,7 +86,13 @@ class Public::OrdersController < ApplicationController
     @shipping = 800
     @total = []
     @order.ordered_items.each do |ordered_item|
-      @total << ordered_item.quantity * ordered_item.pursed_price
+    @total << ordered_item.quantity * ordered_item.purchased_price
+    end
+   
+    if @order.payment_method == 0
+      @payment_method ="クレジットカード"
+    elsif @order.payment_method == 1
+      @payment_method ="銀行振込"
     end
   end
   

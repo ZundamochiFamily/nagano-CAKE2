@@ -1,6 +1,10 @@
 class Member < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
   has_many :delivery_destinations, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
