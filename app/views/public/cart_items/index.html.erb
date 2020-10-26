@@ -2,7 +2,11 @@
   <%= flash[:success] %>
   <div class="col-xs-8 col-xs-offset-2" style="margin-bottom:10px">
     <span>ショッピングカート</span>
-    <div class="pull-right"><%= link_to "カートを空にする", cart_items_path, method: :delete, class:"btn btn-warning" %></div>
+    <div class="pull-right">
+      <% unless current_member.cart_items.empty? %>
+        <%= link_to "カートを空にする", cart_items_path, method: :delete, class:"btn btn-warning" %>
+      <% end %>
+    </div>
   </div>
     <div class="col-xs-8 col-xs-offset-2">
       <table border="3" class="cart_table">
@@ -51,9 +55,9 @@
   </div>
   <div class="row text-center" style="margin-bottom:30px">
     <div class="col-xs-8 col-xs-offset-2">
-      
+      <% unless current_member.cart_items.empty? %>
         <%= link_to '情報入力に進む', new_order_path, class:"btn btn-lg btn-success" %>
-    
+      <% end %>
     </div>
   </div>
 </div>
