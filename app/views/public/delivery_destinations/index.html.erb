@@ -34,7 +34,7 @@
   </thead>
 
   <tbody>
-    <% @deliverys.each do |delivery| %>
+    <% current_member.delivery_destinations.each do |delivery| %>
       <tr>
         <td><%= delivery.postal_code %></td>
         <td><%= delivery.address %></td>
