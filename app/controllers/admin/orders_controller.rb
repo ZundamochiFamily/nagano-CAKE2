@@ -12,7 +12,11 @@ class Admin::OrdersController < ApplicationController
 		# @total = []
 		# @order.ordered_items.each do |order_item|
 		# 	@total << order_item.quantity * order_item.item.tax_excluded_price
+<<<<<<< HEAD
 		end
+=======
+  end
+>>>>>>> 7ab09a4c272b20ed88a1bfdc1db21c3efefd71e7
 
   def update
 		@order = Order.find(params[:id])
