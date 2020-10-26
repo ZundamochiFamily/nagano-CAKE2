@@ -1,10 +1,11 @@
 <div class="row">
-  <div class="col-xs-3" style='border:1px solid;'>
-    <h2><strong>ジャンル検索</strong></h2>
+
+  <div class="col-xs-3 genre_box">
+    <h3 class="text-center genre_tit">ジャンル検索</h3>
     <% @genres.each do |genre| %>
     <div>
-      <ul style='list-style:none;'>
-        <li><%= genre.genre_name %></li>
+      <ul class="genre_list">
+        <li class="genre_item"><%= genre.genre_name %></li>
       </ul>
     </div>
     <% end %>
@@ -12,7 +13,7 @@
 
   <div class="col-xs-9">
 
-    <h2>商品一覧</h2>
+    <h1 class="title">商品一覧</h1>
     <div class="row">
 
       <% @items.each do |item| %>

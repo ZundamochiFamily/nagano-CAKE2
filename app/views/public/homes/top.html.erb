@@ -1,45 +1,52 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
-   <h2>ジャンル検索</h2>
+
+    <div class="col-md-3 genre_box">
+   <h3 class="text-center genre_tit">ジャンル検索</h3>
        <% @genres.each do |genre| %>
     <div>
-          <ul>
-            <li><%= genre.genre_name %></li>
+          <ul class="genre_list">
+            <li class="genre_item"><%= genre.genre_name %></li>
           </ul>
     </div>
         <% end %>
-        </div>
-    <div class="col-md-9">
-        <h2>
+    </div>
+
+
+    <div class="col-md-9 top_block">
+
+      <div class="top_box">
+        <p class="top_txt">
           ようこそ、NaganoCakeへ！
       このサイトは、ケーキ販売のECサイトになります。
       会員でない方も商品の閲覧はできますが、
       購入には会員登録が必要になります。
-        </h2>
+        </p>
+        </div>
+    </div>
 
-      <div>
+
+      <div class="col-md-12">
         <h3>おすすめ商品</h3>
         <div class="row">
          <% @items.each do |item| %>
          <div class="col-md-3">
-           <ul>
+           <ul class="recommend_li">
              <li>
-               <%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png", size: '180x180' %>
+               <%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png", size: '180x100' %>
              </li>
            </ul>
-        <h3>
+        <p>
         <%= link_to item_path(item) do %>
         <%= item.item_name %>
-        </h3>
+        </p>
         <% end %>
-        <h3>¥
+        <p>¥
         <%= item.tax_excluded_price %>
-        </h3>
+        </p>
         </div>
         <% end %>
         </div>
       </div>
-    </div>
-  </div>
+
+
 </div>
