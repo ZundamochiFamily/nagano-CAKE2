@@ -23,7 +23,6 @@ class Admin::OrdersController < ApplicationController
 		   render "show"
 
       end
-
   end
 
   private
