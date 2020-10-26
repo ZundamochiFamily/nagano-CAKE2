@@ -12,7 +12,6 @@ class Admin::OrdersController < ApplicationController
 		# @total = []
 		# @order.ordered_items.each do |order_item|
 		# 	@total << order_item.quantity * order_item.item.tax_excluded_price
-		end
   end
 
   def update

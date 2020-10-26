@@ -2,7 +2,7 @@
 
 <h2 class="title">会員情報編集</h2>
 
-<%= form_with model: @member, local: true do |f| %>
+<%= form_with model: @member, url: admin_member_path, method: :put, local: true do |f| %>
 <div>
 
 

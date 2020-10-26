@@ -31,7 +31,7 @@
       </tr>
     </table>
   </div>
-  
+
   <div class="col-xs-6">
     <table border="1" width="60%">
       <caption>請求情報</caption>
@@ -65,7 +65,7 @@
         <th class="text-center">単価（税込）</th>
         <th class="text-center">個数</th>
         <th class="text-center">小計</th>
-    
+
       <% @order.ordered_items.each do |ordered_item| %>
         </tr>
           <td class="text-center"><%= ordered_item.item.item_name %></td>
