@@ -18,7 +18,7 @@
       <% @items.each do |item| %>
         <div class="col-xs-3">
           <div class="image_box">
-      <%= attachment_image_tag(item, :item_image, :fill, 180, 100, fallback: "no-image-mini.jpg") %>
+      <%= attachment_image_tag item, :item_image, :fill, 180, 100, fallback: "no_image.png" %>
         <p>
           <%= link_to item_path(item) do %>
           <%= item.item_name %>
