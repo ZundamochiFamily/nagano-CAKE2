@@ -13,9 +13,9 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-  #カート画面 
+  #カート画面
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_member.cart_items
     @sum = 0
     @tax =1.1
     current_member.cart_items.each do |cart_item|
@@ -24,14 +24,14 @@ class Public::CartItemsController < ApplicationController
       @sum += sub_total
     end
   end
-  
+
   #カートの詳細画面から数量の「変更」ボタン
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_back(fallback_location: cart_items_path)
   end
-  
+
   #カートの1アイテムを削除
   def destroy
     @cart_item = CartItem.find(params[:id])
@@ -48,9 +48,9 @@ class Public::CartItemsController < ApplicationController
 
     flash[:success] = "カートが空になりました"
   end
-  
+
   private
- 
+
  def cart_item_params
     params.require(:cart_item).permit(:quantity, :item_id)
  end
