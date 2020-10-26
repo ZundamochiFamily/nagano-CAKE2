@@ -54,7 +54,6 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    @cart_items = current_member.cart_items
     @order = Order.new(order_params)
     @order.member_id = current_member.id
     if @order.save
