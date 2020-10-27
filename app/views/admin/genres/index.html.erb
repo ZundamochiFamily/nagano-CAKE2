@@ -1,27 +1,27 @@
 <div class="container">
  <div class="low">
   <div class="col-lg-6">
-  <h1>ジャンル一覧・追加</h1>
+  <h3>ジャンル一覧・追加</h3>
   <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
-  <table>
+  <table class="genre_tr">
     <tr>
   <th>ジャンル
   <%= f.text_field :genre_name %>
   </th>
-  <th>
+  <th class="genre_radio">
     <%= f.radio_button :is_activated, :true %>
     <%= f.label :is_activated, "有効"%>
     <%= f.radio_button :is_activated, :false %>
     <%= f.label :is_activated, "無効"%>
   </th>
   <th>
-  <%= f.submit "追加する" %>
+  <%= f.submit "追加", class: "btn btn-primary genre_btn" %>
   <% end %>
   </th>
   </tr>
   </table>
 
-  <table class='table table-hover table-inverse'>
+  <table class='table table-hover genre_table'>
     <thead>
       <tr>
         <th>ジャンル</th>
