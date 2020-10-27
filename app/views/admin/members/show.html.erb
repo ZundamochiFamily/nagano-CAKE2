@@ -1,16 +1,16 @@
 <h2 class="title">会員詳細</h2>
 
 <div class="col-xs-12">
-<dl class="dl">
+<dl class="dl a_members_dl">
   <dt class="dt">顧客ID</dt>
   <dd class="dd"><%= @member.id %></dd>
-  <p>
+  <dd>
   <% if @member.is_deleted == false %>
-  <p>有効会員</p>
+  <dd class="a_members_dd">有効会員</dd>
   <% elsif @member.is_deleted == true  %>
-  <p>無効会員</p>
+  <dd class="a_members_dd">無効会員</dd>
   <% end %>
-  </p>
+  </dd>
 </dl>
 <dl class="dl">
   <dt class="dt">氏名</dt>
