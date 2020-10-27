@@ -19,5 +19,9 @@ class Member < ApplicationRecord
   validates :postal_code, presence: true, length: {maximum: 7, minimum: 7}
   validates :address, presence: true
   validates :phone_number, presence: true
-
+  
+  def registered?(delivery_destination)
+    self.delivery_destinations.where(address: delivery_destination.address, postal_code: delivery_destination.postal_code, reciever_name: delivery_destination.reciever_name).exists? || delivery_destination.postal_code == self.postal_code && delivery_destination.address == self.address
+  end
+  
 end
