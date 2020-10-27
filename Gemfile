@@ -70,3 +70,4 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'rspec-rails'
 gem 'pry-byebug', group: :development
 gem 'faker'
+gem 'rails-i18n'
