@@ -1,8 +1,8 @@
 <div class="row" style="margin-top:30px">
-  <%= flash[:success] %>
   <div class="col-xs-8 col-xs-offset-2" style="margin-bottom:10px">
     <span>ショッピングカート</span>
     <div class="pull-right">
+      <%= flash[:success] %>
       <% unless current_member.cart_items.empty? %>
         <%= link_to "カートを空にする", cart_items_path, method: :delete, class:"btn btn-warning" %>
       <% end %>
