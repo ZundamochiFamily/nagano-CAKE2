@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_10_23_114011) do
   end
 
   create_table "delivery_destinations", force: :cascade do |t|
-    t.integer "member_id"
     t.string "postal_code"
     t.string "address"
     t.string "reciever_name"
