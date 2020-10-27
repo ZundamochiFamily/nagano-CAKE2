@@ -27,7 +27,8 @@
           <%= item.item_name %>
           <% end %>
         </p>
-      <p>￥<%= item.tax_excluded_price.to_s(:delimited, delimiter: ",") %></p>
+        <% tax_included_price = (item.tax_excluded_price * @tax).floor %>
+      <p>￥<%= tax_included_price.to_s(:delimited, delimiter: ",") %></p>
           </div>
         </div>
       <% end %>
