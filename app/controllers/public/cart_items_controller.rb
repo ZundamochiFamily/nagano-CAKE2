@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item = current_member.cart_items.find_by(item_id: params[:cart_item][:item_id])
       @cart_item.quantity += params[:cart_item][:quantity].to_i
       @cart_item.save
-      redirect_to cart_items_path, success:"#{@cart_item.item.item_name}の数量を変更しました"
+      redirect_to cart_items_path
     else
       @cart_item = current_member.cart_items.build(cart_item_params)
       @cart_item.save
@@ -30,6 +30,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_back(fallback_location: cart_items_path)
+    flash[:success] = "商品の数量を変更しました"
   end
 
   #カートの1アイテムを削除
@@ -37,7 +38,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_back(fallback_location: root_path)
-
+    flash[:success] = "選択した商品を削除しました"
   end
 
   #カートを空にする
@@ -45,7 +46,6 @@ class Public::CartItemsController < ApplicationController
     @cart_item = current_member.cart_items
     @cart_item.destroy_all
     redirect_back(fallback_location: root_path)
-
     flash[:success] = "カートが空になりました"
   end
 

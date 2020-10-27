@@ -77,7 +77,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    
+    @orders = current_member.orders.page(params[:page]).reverse_order
     @shipping = 800
   end
   
