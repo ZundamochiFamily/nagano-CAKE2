@@ -21,12 +21,9 @@
           <div class="image_box">
             <%= attachment_image_tag item, :item_image, :fill, 170, 100, fallback: "no_image.png", size: "180x100" %>
           <p>
-            <%= link_to item_path(item) do %>
-            <%= item.item_name %>
+            <%= link_to item_path(item) do %><%= item.item_name %>
             <% end %>
-          </p>
-          <% tax_included_price = (item.tax_excluded_price * @tax).floor %>
-          <p>￥<%= tax_included_price.to_s(:delimited, delimiter: ",") %></p>
+          <% tax_included_price = (item.tax_excluded_price * @tax).floor %>￥<%= tax_included_price.to_s(:delimited, delimiter: ",") %></p>
           </div>
         </div>
       <% end %>
