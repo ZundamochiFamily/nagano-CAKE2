@@ -11,7 +11,7 @@
       <% if member_signed_in? %>
        <!--メンバーログイン-->
         <li class="header-name">
-          ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん！
+          ようこそ、<%= current_member.first_name %><%= current_member.last_name %>さん！
         </li>
         <li class="header_item">
           <%= link_to " my page", member_path(current_member), class: "header_btn glyphicon glyphicon-leaf" %>
