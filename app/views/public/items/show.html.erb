@@ -14,7 +14,7 @@
     <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
     <div class="row item_show">
       <div class="col-xs-6">
-        <%= attachment_image_tag @item, :item_image, :fill, 350, 250, fallback: "no_image.png" %>
+        <%= attachment_image_tag @item, :item_image, :fill, 320, 250, fallback: "no_image.png" %>
       </div>
       <div class="col-xs-6">
         <h2><strong><%= @item.item_name %></strong></h2>

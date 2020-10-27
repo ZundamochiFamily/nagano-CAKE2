@@ -19,20 +19,18 @@
       <% @items.each do |item| %>
         <div class="col-xs-3">
           <div class="image_box">
-
-      <%= attachment_image_tag item, :item_image, :fill, 180, 100, fallback: "no_image.png", size: "180x100" %>
-
-        <p>
-          <%= link_to item_path(item) do %>
-          <%= item.item_name %>
-          <% end %>
-        </p>
-        <% tax_included_price = (item.tax_excluded_price * @tax).floor %>
-      <p>￥<%= tax_included_price.to_s(:delimited, delimiter: ",") %></p>
+            <%= attachment_image_tag item, :item_image, :fill, 170, 100, fallback: "no_image.png", size: "180x100" %>
+          <p>
+            <%= link_to item_path(item) do %>
+            <%= item.item_name %>
+            <% end %>
+          </p>
+          <% tax_included_price = (item.tax_excluded_price * @tax).floor %>
+          <p>￥<%= tax_included_price.to_s(:delimited, delimiter: ",") %></p>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-  </div>
+</div>
 
