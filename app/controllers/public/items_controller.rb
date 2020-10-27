@@ -6,7 +6,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    @genres = Genre.all
+    @genres = Genre.all.where(is_activated: 'true')
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
