@@ -2,9 +2,9 @@ class Public::CartItemsController < ApplicationController
 
   #商品詳細画面から「カートに追加」を押したときのアクション
   def create
-    if @cart_item = current_member.cart_items.find_by(item_id: params[:cart_item][:item_id])
-      @cart_item.quantity += params[:cart_item][:quantity].to_i
-      @cart_item.save
+    if
+      @cart_item = current_member.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      @cart_item.update(quantity: @cart_item.quantity + params[:cart_item][:quantity].to_i)
       redirect_to cart_items_path
     else
       @cart_item = current_member.cart_items.build(cart_item_params)
