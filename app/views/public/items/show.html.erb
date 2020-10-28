@@ -11,6 +11,7 @@
   </div>
 
   <div class="col-xs-9">
+    <% flash[:message] %>
     <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
     <div class="row item_show">
       <div class="col-xs-6">
